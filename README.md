@@ -13,6 +13,8 @@ Pytorch implementation of our method for high-resolution (e.g. 1008x1008) image 
   <img title="Input phase-contrast image" src='imgs/aggregate/4g.png' width='266'/>
   <img title="Fluorescent image" src='imgs/aggregate/4a.png' width='266'/>
   <img title="Synthesized image" src='imgs/aggregate/4b.png' width='266'/>
+</p>
+<p align='right'>
   <img title="Histogram equalized fluorescent image" src='imgs/aggregate/4d.png' width='266'/>
   <img title="Histogram equalized synthesized image" src='imgs/aggregate/4e.png' width='266'/>
 </p>
