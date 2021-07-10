@@ -10,10 +10,10 @@ Pytorch implementation of our method for high-resolution (e.g. 1008x1008) image 
 ## Transform phase-contrast to fluorescent images of *Myxococcus xanthus*
 - Aggregates and streams
 <p align='right'>
-  <img title="aggregates and streams" src='imgs/img1.jpeg' width='800'/>
+  <img title="aggregates and streams" src='imgs/img1.png' width='800'/>
 </p>
 
 - Ripples
 <p align='right'>
-  <img title="ripples" src='imgs/img2.jpeg' width='800'/>
+  <img title="ripples" src='imgs/img2.png' width='800'/>
 </p>
