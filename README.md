@@ -7,8 +7,11 @@ Pytorch implementation of our method for high-resolution (e.g. 1008x1008) image 
  [Jiangguo Zhang](https://JiangguoZhang.github.io/)<sup>1</sup>, [Jessica A. Comstock](https://thecollege.syr.edu/people/graduate-students/comstock-jessica/)<sup>2</sup>, [Christopher R. Cotter](https://shimkets.uga.edu/who/cotter)<sup>1</sup>, [Patrick A. Murphy](https://igoshin.rice.edu/people.html)<sup>1</sup>, [Weili Nie](https://weilinie.github.io/)<sup>3</sup>, [Ankit B. Patel](https://ankitlab.co/)<sup>3,4</sup>, [Roy D. Welch](http://www.welchlab.net/)<sup>2</sup>, [Oleg A. Igoshin](https://igoshin.rice.edu/index.html)<sup>1</sup> 
 
  <sup>1</sup>Department of Bioengineering, Rice University, Houston, TX 77005, USA,
+ 
  <sup>2</sup>Department of Biology, Syracuse University, Syracuse, NY 13244, USA,
+ 
  <sup>3</sup>Department of Electrical and Computer Engineering, Rice University, Houston, TX 77005, USA,
+ 
  <sup>4</sup>Department of Neuroscience, Baylor College of Medicine, Houston, TX 77005, USA
 
 ## Transform phase-contrast to fluorescent images of *Myxococcus xanthus*
