@@ -31,8 +31,7 @@ Pytorch implementation of our method for high-resolution (e.g. 1008x1008) image 
 
 ## Getting Started
 ### Installation
-- Get Anaconda 3 from https://www.anaconda.com/products/individual
-- Install Anaconda 3
+- Get and install [Anaconda 3](https://www.anaconda.com/products/individual)
 - Clone this repo: (Make sure you have at least 1GB memory space)
 ```bash
 git clone https://github.com/IgoshinLab/pix2pixHD-HE
