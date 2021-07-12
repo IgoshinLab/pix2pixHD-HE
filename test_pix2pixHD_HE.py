@@ -1,22 +1,19 @@
+import argparse
+import io
 import json
 import os
-import io
-import cv2
-
-import argparse
-import numpy as np
 import pickle as pkl
-import torch
-import kornia
-import torch.nn as nn
+
+import cv2
 import matplotlib.pyplot as plt
+import numpy as np
+import torch
+import torch.nn as nn
 from matplotlib_scalebar.scalebar import ScaleBar
 from torch.utils.data import DataLoader
-from nets.utils import MultiLayerDiscriminator
-from dataloaders.utils.general import NormalizeTif
-from skimage.metrics import structural_similarity as ssim
 
 import dataloaders
+from dataloaders.utils.general import NormalizeTif
 from nets import GAN2D
 from pytorch_utils import util, batcher
 
@@ -30,15 +27,15 @@ parser.add_argument('--net-struct', default='./structure/pix2pixHD_he-2.json',
 parser.add_argument('--multiGPU', action='store_true',
                     help='''Enable training on multiple GPUs, uses all that are available.''')
 parser.add_argument('--dataset_loc',
-                    default="/mnt/data/stack_full",
+                    default="data",
                     help='Folder containing dataset')
 parser.add_argument('--name-list',
                     default="hr7",
                     help='The name sequence split by _')
-common_dir = "0607-ripple"
-scratch_dir = "/mnt/data/DeepEGDenoise/pix2pixHD"
+common_dir = "0712"
+scratch_dir = "test_results"
 parser.add_argument('--load',
-                    default='%s/%s/CHECKPOINTS/CHECKPOINT-2500' % (scratch_dir, common_dir),
+                    default='CHECKPOINTS',
                     help='''Load pre-trained networks''')
 parser.add_argument('--img-loc',
                     default='%s/%s/img' % (scratch_dir, common_dir),
@@ -163,35 +160,35 @@ def test(norm_rage=None):
                     fig, ax = plt.subplots(2, 3, figsize=[12, 8])
                     ax[0, 0].imshow(phase, cmap='gray')
                     ax[0, 0].axis('off')
-                    # ax[0, 0].set_title("phase contrast + CLAHE")
-                    # ax[0, 0].text(10, 50, "A", fontsize=36, color='white')
+                    ax[0, 0].set_title("phase contrast + CLAHE")
+                    ax[0, 0].text(10, 50, "A", fontsize=36, color='white')
 
                     ax[0, 1].imshow(tdt, cmap='gray')
                     ax[0, 1].axis('off')
-                    # ax[0, 1].set_title("tdTomato + CLAHE")
-                    # ax[0, 1].text(10, 50, "B", fontsize=36, color='white')
+                    ax[0, 1].set_title("tdTomato + CLAHE")
+                    ax[0, 1].text(10, 50, "B", fontsize=36, color='white')
 
                     ax[0, 2].imshow(gen, cmap='gray')
                     ax[0, 2].axis('off')
-                    # ax[0, 2].set_title("CLAHE output")
-                    # ax[0, 2].text(10, 50, "C", fontsize=36, color='white')
+                    ax[0, 2].set_title("CLAHE output")
+                    ax[0, 2].text(10, 50, "C", fontsize=36, color='white')
 
                     ax[1, 0].imshow(gen_he, cmap='gray')
                     ax[1, 0].axis('off')
-                    # ax[1, 0].set_title("HE output")
-                    # ax[1, 0].text(10, 50, "D", fontsize=36, color='white')
+                    ax[1, 0].set_title("HE output")
+                    ax[1, 0].text(10, 50, "D", fontsize=36, color='white')
                     tdt = np.uint16((tdt - norm_rage[0]) / (norm_rage[1] - norm_rage[0]) * 65535)
                     tdt = method.forward(tdt)
                     ax[1, 1].imshow(tdt, cmap='gray')
                     ax[1, 1].axis('off')
-                    # ax[1, 1].set_title("tdTomato + CLAHE + HE")
-                    # ax[1, 1].text(10, 50, "E", fontsize=36, color='white')
+                    ax[1, 1].set_title("tdTomato + CLAHE + HE")
+                    ax[1, 1].text(10, 50, "E", fontsize=36, color='white')
                     gen = np.uint16((gen - norm_rage[0]) / (norm_rage[1] - norm_rage[0]) * 65535)
                     gen = method.forward(gen)
                     ax[1, 2].imshow(gen, cmap='gray')
                     ax[1, 2].axis('off')
-                    # ax[1, 2].set_title("CLAHE output + HE")
-                    # ax[1, 2].text(10, 50, "F", fontsize=36, color='white')
+                    ax[1, 2].set_title("CLAHE output + HE")
+                    ax[1, 2].text(10, 50, "F", fontsize=36, color='white')
 
                     fig.tight_layout()
                     scalebar = ScaleBar(1.3e-6, location="upper right")  # 1 pixel = 1.3 microns
@@ -209,30 +206,10 @@ def test(norm_rage=None):
     if opt.movie:
         movieSize = imgList[0].shape[:2]
         movieSize = (movieSize[1], movieSize[0])
-        #print(movieSize)
         out = cv2.VideoWriter(os.path.join(opt.img_loc, "movie.avi"), cv2.VideoWriter_fourcc(*'DIVX'), 4, movieSize)
         for img in imgList:
             out.write(img)
         out.release()
-    """
-    items = [MSE_list, MSE_he_list, ssim_list, ssim_he_list]
-    names = ["MSE", "MSE_HE", "SSIM", "SSIM_HE"]
-    for i, MSE_case in enumerate(items):
-        MSE_mean = np.sum(MSE_case) / len(MSE_case)
-        binwidth = 0.001
-        MSE_max = np.around(np.max(MSE_case), decimals=3)
-        MSE_min = np.around(np.min(MSE_case), decimals=3)
-        MSE_hist = np.histogram(MSE_case, bins=np.linspace(MSE_min - binwidth, MSE_max + binwidth,
-                                                           int((MSE_max + 2 * binwidth - MSE_min) / binwidth + 1)))
-        np.save(os.path.join(opt.stat_loc + "2", names[i] + ".npy"), MSE_hist)
-        width = MSE_hist[1][1] - MSE_hist[1][0]
-        plt.bar(MSE_hist[1][:-1] + width / 2, MSE_hist[0], width=width)
-        plt.xlabel(names[i])
-        plt.ylabel('Percentage')
-        plt.title('Histogram, mean = %.8f' % MSE_mean)
-        plt.savefig(os.path.join(opt.stat_loc + "2", names[i] + ".png"))
-        plt.cla()
-        print("\t The %s for this test set is: %.10f" % (names[i], MSE_mean))
-    """
+
 
 test()

@@ -1,6 +1,5 @@
 from tkinter import _flatten
 
-import torch
 import torch.nn as nn
 
 from nets.utils import get_layer, build_sequential_layer

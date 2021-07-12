@@ -1,6 +1,7 @@
-import torch
-import torch.nn as nn
 from collections import OrderedDict
+
+import torch.nn as nn
+
 from .Blocks import ConstantBlock, AdaIN, NoiseLayer, Linear, Convolution, Deconvolution, Normalization, Activation, \
     Dropout2d, Pad, Downscale
 from .Calculations import Reshape, Reparameterize, Concat, Addition

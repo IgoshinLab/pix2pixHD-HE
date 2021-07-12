@@ -26,7 +26,7 @@ Pytorch implementation of our method for high-resolution (e.g. 1008x1008) image 
 </p>
 
 ## Prerequisites
-- Anaconda 3
+- Anaconda 3 for python 3.7
 - NVIDIA GPU (11G memory or larger) + CUDA cuDNN
 
 ## Getting Started
@@ -41,6 +41,8 @@ conda env create -f environment.yaml
 ```bash
 git clone https://github.com/IgoshinLab/pix2pixHD-HE
 ```
+
+- Get the model 
 
 
 

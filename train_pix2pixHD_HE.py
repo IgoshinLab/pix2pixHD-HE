@@ -37,10 +37,10 @@ parser.add_argument('--checkpoint-dir', default="./CHECKPOINTS",
                     help='''The models are saved in this dir.''')
 # Move the dataset to SSD for faster loading..
 parser.add_argument('--dataset-loc',
-                    default="",
+                    default="data",
                     help='Folder containing training dataset')
 parser.add_argument('--name-list',
-                    default="r0",
+                    default="hr7",
                     help='The name sequence split by _')
 parser.add_argument('--label1', default='phase', help='The input image label.')
 parser.add_argument('--label2', default='tdTomato', help='The ground truth image label.')
