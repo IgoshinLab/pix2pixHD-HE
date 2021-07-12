@@ -1,4 +1,4 @@
-name: VIB
+name: pix2pixHD-HE
 channels:
   - defaults
 dependencies:
@@ -153,4 +153,4 @@ dependencies:
     - wcwidth==0.1.7
     - wrapt==1.11.2
     - zipp==0.6.0
-prefix: /home/xavier/anaconda3/envs/VIB
+prefix: envs/pix2pixHD-HE
