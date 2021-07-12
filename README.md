@@ -55,6 +55,10 @@ python test_pix2pixHD_HE.py --name-list hr7
 python train_pix2pixHD_HE.py --name-list r0
 ```
 
+## Build your own model
+The interface of model builder is available at http://igoshinlab-mbuilder.surge.sh/
+You can also check the source code at https://github.com/IgoshinLab/ModuleBuilder
+
 # Acknowledgments
 The idea of this code borrows heavily from [pix2pixHD](https://github.com/NVIDIA/pix2pixHD/).
 
