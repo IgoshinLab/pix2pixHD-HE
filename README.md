@@ -43,16 +43,18 @@ conda env create -f environment.yaml
 conda activate pix2pixHD-HE
 ```
 ## Testing
-  A sub set of the test set mentioned in our paper is provided in /data/.
+  Download data from Mendeley Data: 
+  Zhang, Jiangguo; Comstock, Jessica; Welch, Roy; Igoshin, Oleg (2021), “pix2pixHD-HE”, Mendeley Data, V1, doi: 10.17632/7gjt4d8b4k.1
+  Test the model on one of the testsets:
 
 ```bash
-python test_pix2pixHD_HE.py --name-list hr7
+python test_pix2pixHD_HE.py --name-list rdt0
 ```
 
 ## Training on rippling images
- A sub set of the test rippling dataset mentioned in our paper is provided in /data/.
+ Train the model on rippling images:
 ```bash
-python train_pix2pixHD_HE.py --name-list r0
+python train_pix2pixHD_HE.py --name-list r0_r1
 ```
 
 ## Build your own model
