@@ -43,7 +43,8 @@ conda env create -f environment.yaml
 conda activate pix2pixHD-HE
 ```
 ## Testing
-  Download data from [Mendeley Data](https://data.mendeley.com/datasets/7gjt4d8b4k/1) and save it in /data: 
+  Download the data from [Mendeley Data](https://data.mendeley.com/datasets/7gjt4d8b4k/1) and save it in /data directory: 
+
   Zhang, Jiangguo; Comstock, Jessica; Welch, Roy; Igoshin, Oleg (2021), “pix2pixHD-HE”, Mendeley Data, V1, doi: 10.17632/7gjt4d8b4k.1
   Test the model on one of the testsets:
 
