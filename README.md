@@ -43,10 +43,11 @@ conda env create -f environment.yaml
 conda activate pix2pixHD-HE
 ```
 ## Testing
-  Download the data from [Mendeley Data](https://data.mendeley.com/datasets/7gjt4d8b4k/1) and save it in /data directory: 
+  - Download the data from [Mendeley Data](https://data.mendeley.com/datasets/7gjt4d8b4k/1) and save it in /data directory: 
 
   Zhang, Jiangguo; Comstock, Jessica; Welch, Roy; Igoshin, Oleg (2021), “pix2pixHD-HE”, Mendeley Data, V1, doi: 10.17632/7gjt4d8b4k.1
-  Test the model on one of the testsets:
+  
+  - Test the model on one of the testsets:
 
 ```bash
 python test_pix2pixHD_HE.py --name-list rdt0
@@ -59,8 +60,9 @@ python train_pix2pixHD_HE.py --name-list r0_r1
 ```
 
 ## Build your own model
-The interface of model builder is available at http://igoshinlab-mbuilder.surge.sh/
-You can also check the source code at https://github.com/IgoshinLab/ModuleBuilder
+- The interface of model builder is available at http://igoshinlab-mbuilder.surge.sh/
+
+- You can also check the source code at https://github.com/IgoshinLab/ModuleBuilder
 
 # Acknowledgments
 The idea of this code borrows heavily from [pix2pixHD](https://github.com/NVIDIA/pix2pixHD/).
