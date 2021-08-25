@@ -62,7 +62,25 @@ python train_pix2pixHD_HE.py --name-list r0_r1
 ## Build your own model
 - The interface of model builder is available at http://igoshinlab-mbuilder.surge.sh/
 
-- You can also check the source code at https://github.com/IgoshinLab/ModuleBuilder
+- You can also check the source code for model builder at https://github.com/IgoshinLab/ModuleBuilder
+
+## Build your training/test set
+### Visualize your dataset
+```bash
+python utils/pkl_to_tif.py --pkl_dir "path_to_your_pkl_file" --tif_dir "path_to_save_tif_images"
+```
+### Transform your .tif images to .pkl stack
+For example, if we have 100 phase-contrast images under "images/phase" directory, named as image_0.tif, ..., image_99.tif, 
+and 100 corresponding fluorescent images under "images/fluorescent" directory, named as image_0.tif, ..., image_99.tif. 
+We can stack the images into .pkl stacks by the following code.
+```bash
+python utils/tif_to_pkl.py --tif_dir images/phase --pkl_dir data --name ds1 --label phase --name_format image_%d.tif --start_idx 0 --end_idx 99 --resize_by 1
+python utils/tif_to_pkl.py --tif_dir images/fluorescent --pkl_dir data --name ds1 --label fluoresent --name_format image_%d.tif --start_idx 0 --end_idx 99 --resize_by 1
+```
+During training/testing, remember to specify the labels:
+```bash
+python train_pix2pixHD_HE.py --name-list ds1 --label1 phase --label2 fluorescent
+```
 
 # Acknowledgments
 The idea of this code borrows heavily from [pix2pixHD](https://github.com/NVIDIA/pix2pixHD/).
