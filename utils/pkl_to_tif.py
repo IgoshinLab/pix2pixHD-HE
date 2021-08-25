@@ -18,9 +18,9 @@ def pkl2tif(pkl_dir, tif_dir):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Transform the .pkl image stack to individual .tif images.')
-    parser.add_argument('--pkl_dir', default='./data/hdt1_phase.pkl', type=str,
+    parser.add_argument('--pkl-dir', default='./data/hdt1_phase.pkl', type=str,
                         help='The directory for .pkl file.')
-    parser.add_argument('--tif_dir', default='./imgs/', type=str, help='The directory to save the images.')
+    parser.add_argument('--tif-dir', default='./imgs/', type=str, help='The directory to save the images.')
     args = parser.parse_args()
 
     pkl2tif(args.pkl_dir, args.tif_dir)

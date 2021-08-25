@@ -67,15 +67,15 @@ python train_pix2pixHD_HE.py --name-list r0_r1
 ## Build your training/test set
 ### Visualize your dataset
 ```bash
-python utils/pkl_to_tif.py --pkl_dir "path_to_your_pkl_file" --tif_dir "path_to_save_tif_images"
+python utils/pkl_to_tif.py --pkl-dir "path_to_your_pkl_file" --tif-dir "path_to_save_tif_images"
 ```
 ### Transform your .tif images to .pkl stack
 For example, if we have 100 phase-contrast images under "images/phase" directory, named as image_0.tif, ..., image_99.tif, 
 and 100 corresponding fluorescent images under "images/fluorescent" directory, named as image_0.tif, ..., image_99.tif. 
 We can stack the images into .pkl stacks by the following code.
 ```bash
-python utils/tif_to_pkl.py --tif_dir images/phase --pkl_dir data --name ds1 --label phase --name_format image_%d.tif --start_idx 0 --end_idx 99 --resize_by 1
-python utils/tif_to_pkl.py --tif_dir images/fluorescent --pkl_dir data --name ds1 --label fluoresent --name_format image_%d.tif --start_idx 0 --end_idx 99 --resize_by 1
+python utils/tif_to_pkl.py --tif-dir images/phase --pkl-dir data --name ds1 --label phase --name-format image_%d.tif --start-idx 0 --end-idx 99 --resize-by 1
+python utils/tif_to_pkl.py --tif-dir images/fluorescent --pkl-dir data --name ds1 --label fluoresent --name-format image_%d.tif --start-idx 0 --end-idx 99 --resize-by 1
 ```
 During training/testing, remember to specify the labels:
 ```bash

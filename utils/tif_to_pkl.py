@@ -40,14 +40,14 @@ def tif2pkl(tif_dir, pkl_dir, name, label, name_format, start_idx, end_idx, resi
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Transform the .tif images to a .pkl stack.')
-    parser.add_argument('--tif_dir', default='./imgs/', type=str, help='The directory of your .tif/.jpg images.')
-    parser.add_argument('--pkl_dir', default='./data/hdt1_phase.pkl', type=str, help='The directory for .pkl file.')
+    parser.add_argument('--tif-dir', default='./imgs/', type=str, help='The directory of your .tif/.jpg images.')
+    parser.add_argument('--pkl-dir', default='./data/hdt1_phase.pkl', type=str, help='The directory for .pkl file.')
     parser.add_argument('--name', default='ds1', type=str, help='The name of this dataset.')
     parser.add_argument('--label', default='phase', type=str, help='The label of the image stack.')
-    parser.add_argument('--name_format', default='images_%d.tif', type=str, help='The specific format for images.')
-    parser.add_argument('--start_idx', default=0, type=int, help='The start index.')
-    parser.add_argument('--end_idx', default=100, type=int, help='The end index.')
-    parser.add_argument('--resize_by', default=1, type=float, help='Resize the image for sufficient training.')
+    parser.add_argument('--name-format', default='images_%d.tif', type=str, help='The specific format for images.')
+    parser.add_argument('--start-idx', default=0, type=int, help='The start index.')
+    parser.add_argument('--end-idx', default=100, type=int, help='The end index.')
+    parser.add_argument('--resize-by', default=1, type=float, help='Resize the image for sufficient training.')
     args = parser.parse_args()
 
     tif2pkl(args.tif_dir, args.pkl_dir, args.name, args.label, args.name_format, args.start_idx, args.end_idx,
